@@ -9,7 +9,7 @@ const router = express.Router();
 router.get('/status', (req, res) => res.send('OK'));
 
 
-// v1/auth/<payment>
+// v1/<payment>
 router.use('/payment', paymentRoutes);
 
 module.exports = router;

@@ -27,6 +27,7 @@ exports.get = (req, res) => res.json(req.locals.payment.transform());
  * @public
  */
 exports.create = async (req, res, next) => {
+  console.log('creating payment start');
   try {
     const payment = new Payment(req.body);
     const savedPayment = await payment.save();
