@@ -33,7 +33,7 @@ const paymentSchema = new mongoose.Schema({
     type: String,
     match: /^[0-9]{3,4}$/,
     required: true,
-    trim: true,
+    trim: true
   },
   createdBy: {
     type: String,
@@ -57,7 +57,7 @@ const paymentSchema = new mongoose.Schema({
 paymentSchema.method({
   transform() {
     const transformed = {};
-    const fields = ['id', 'cardHolderName', 'cardNumber', 'expiryMonth', 'expiryYear', 'cvc', 'createdBy', 'createdAt'];
+    const fields = ['id', 'cardHolderName', 'cardNumber', 'expiryMonth', 'expiryYear', 'cvc', 'createdBy', 'status', 'createdAt'];
 
     fields.forEach((field) => {
       transformed[field] = this[field];

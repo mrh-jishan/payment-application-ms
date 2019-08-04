@@ -1,4 +1,6 @@
 const Joi = require('joi');
+const Payment = require('../models/payment.model');
+const {sample} = require('lodash');
 
 module.exports = {
 
@@ -9,7 +11,8 @@ module.exports = {
       cardNumber: Joi.string().min(10).max(20).required(),
       expiryMonth: Joi.string().regex(/^(0[1-9]|1[0-2]|[1-9])\/(1[4-9]|[2-9][0-9]|20[1-9][1-9])$/),
       cvc: Joi.string().min(3).max(4),
-      createdBy: Joi.string().max(128)
+      createdBy: Joi.string().max(128),
+      status: Joi.string().default(sample(Payment.paymentStatus))
     }
   }
 };

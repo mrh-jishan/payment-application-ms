@@ -30,7 +30,6 @@ exports.create = async (req, res, next) => {
   try {
     const payment = new Payment(req.body);
     const savedPayment = await payment.save();
-    console.log(savedPayment)
     res.status(httpStatus.CREATED);
     res.json(savedPayment.transform());
   } catch (error) {
