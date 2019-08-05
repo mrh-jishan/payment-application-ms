@@ -1,7 +1,7 @@
 const express = require('express');
 const validate = require('express-validation');
 const controller = require('../../controllers/payment.controller');
-const {authorize, ADMIN, LOGGED_USER} = require('../../middlewares/auth');
+const {authorize} = require('../../middlewares/auth');
 const {createPayment} = require('../../validations/payment.validation');
 
 const router = express.Router();
@@ -14,12 +14,8 @@ router.param('userId', controller.load);
 
 router
   .route('/')
-  .get(authorize(ADMIN), controller.list)
+  .get(authorize(), controller.list)
   .post(authorize(), validate(createPayment), controller.create);
-
-router
-  .route('/:userId')
-  .get(authorize(LOGGED_USER), controller.get);
 
 
 module.exports = router;
