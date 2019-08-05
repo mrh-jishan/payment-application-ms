@@ -1,6 +1,4 @@
 const Joi = require('joi');
-const Payment = require('../models/payment.model');
-const {sample} = require('lodash');
 
 module.exports = {
 
@@ -13,7 +11,7 @@ module.exports = {
       cvc: Joi.string().required().min(3).max(4),
       createdBy: Joi.string().required().max(128),
       product: Joi.string().required().max(128),
-      status: Joi.string().default(sample(Payment.paymentStatus))
+      order: Joi.string().required().max(128)
     }
   }
 };
